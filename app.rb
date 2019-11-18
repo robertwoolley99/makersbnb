@@ -9,10 +9,21 @@ class Bnb < Sinatra::Base
   DataMapper.auto_migrate!
   
   get '/' do
-    erb :index    
+    erb :index
   end
 
-  # get '/spaces' do
+  get '/spaces/new' do
+    erb :new_space
+  end
+
+  post '/listed' do
+    # add to database
+    redirect('/confirmation')
+  end
+
+  get '/confirmation' do
+    'Listing added OK'
+  end
 
   run! if app_file == $0
 end
