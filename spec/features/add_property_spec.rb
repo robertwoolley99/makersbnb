@@ -8,7 +8,7 @@ feature 'adding property' do
   scenario 'you can enter a listing with details' do
     visit ('/spaces/new')
     fill_in 'location', with: 'London'
-    fill_in 'price_per_night', with: 100
+    fill_in 'price_per_night', with: '100'
     fill_in 'dates_available', with: 'December'
     fill_in 'owner_name', with: 'J Bloggs'
     fill_in 'contact_details', with: 'jo@bloggs.com'
