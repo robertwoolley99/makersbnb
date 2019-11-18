@@ -34,6 +34,8 @@ Specification
 
 # User Stories
 
+## For Minimum Viable Product:
+
 ### Adding Properties:  
 > As a property owner.  
 > So that I can rent my property out  
@@ -45,6 +47,8 @@ Specification
 > so that I can choose which property to rent  
 > I want to be able to see a list of properties  
 > with property details and owner contact information.
+
+## To add after MVP
 
 ### User Management - Landlord
 > As a landlord.  
