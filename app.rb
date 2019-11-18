@@ -12,6 +12,11 @@ class Bnb < Sinatra::Base
     erb :index
   end
 
+  get '/spaces' do
+    @listings = listings.all
+    erb :spaces
+  end
+
   get '/spaces/new' do
     erb :new_space
   end
