@@ -54,10 +54,20 @@ Specification
 > As a landlord.  
 > so that I can control my listing  
 > I want to have an account on the system which identifies me.
-> 
+>
+> As a landlord.  
+> so that I can control my listing  
+> I want to be able to amend my listing
+>
+> As a landlord.  
+> so that I can manage customers.
+> I want to be able to block out dates that have been booked.
 
 ### User Management - Tenant
-> As a tenant so that I can make bookings.  
+> As a tenant.
+> so that I can make bookings.  
 > I want to have an account on the system which identifies me.
-
-
+>
+> As a tenant.
+> so that I can make bookings.  
+> I want to be able to book for a certain date.
