@@ -1,13 +1,13 @@
 require 'sinatra/base'
 
-require_relative 'model/properties.rb'
+require_relative 'model/listings.rb'
 
 class Bnb < Sinatra::Base
 
   DataMapper.setup :default, "postgres://#{ENV["USER"]}@localhost/makersbnb"
   DataMapper.finalize
   DataMapper.auto_migrate!
-  
+
   get '/' do
     erb :index
   end
