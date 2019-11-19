@@ -1,4 +1,8 @@
 feature 'adding property' do
+  after(:each) do
+    Listings.destroy
+  end
+  
   scenario 'you can visit the add listings page' do
     visit ('/')
     click_button 'Add listing!'

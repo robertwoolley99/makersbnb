@@ -1,7 +1,7 @@
 require "data_mapper"
 require "dm-postgres-adapter"
 
-class Listings
+class Listing
   include DataMapper::Resource
 
   property :id             , Serial
@@ -12,5 +12,7 @@ class Listings
   property :contact_details, String
   property :description    , String
   property :created_at     , DateTime
+
+  has n, :bookings
 
 end

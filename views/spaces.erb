@@ -1,7 +1,37 @@
- <ul>
-   <% @listings.each do |listing| %>
-     <li>Description: <%=listing.description%> Price per night: <%=listing.price%></li>
-     <li>Location: <%=listing.location%> Available: <%=listing.dates_available%></li>
-     <li>Owner: <%=listing.owner_name%> Contact details: <%=listing.contact_details%></li>
-   <% end %>
- </ul>
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="interface.js"></script>
+  </head>
+    <body>
+       <ul>
+         <% @listings.each do |listing| %>
+
+           <li>Description: <%=listing.description%> Price per night: <%=listing.price%></li>
+           <li>Location: <%=listing.location%> Available: <%=listing.dates_available%></li>
+           <li>Owner: <%=listing.owner_name%> Contact details: <%=listing.contact_details%></li>
+
+           <form action="/booking" method="post">
+             <div id="holder1">
+               <p>Check-in date:</p>
+               <input type="text" name="check_in" class="datepicker">
+             </div>
+
+             <div id="holder2">
+               <p>Check-out date:</p>
+               <input type="text" name="check_out" class="datepicker">
+             </div>
+
+             <input type="text" name="listing_id" value="<%=listing.id%>">
+               <input type="submit" value="Submit">
+           </form>
+
+         <% end %>
+       </ul>
+     </body>
+</html>
