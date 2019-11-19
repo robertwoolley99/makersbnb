@@ -28,10 +28,6 @@ Specification
     A ‘chat’ functionality once a space has been booked, allowing users whose space-booking request has been confirmed to chat with the user that owns that space
     Basic payment implementation though Stripe.
 
-
-
-
-
 # Planning
 
 ## User stories for Minimum Viable Product:
@@ -56,7 +52,7 @@ Specification
 > As a landlord.  
 > so that I can control my listing  
 > I want to have an account on the system which identifies me.
- 
+
 > As a landlord.  
 > so that I can get bookings  
 > I want to be able to add a listing.

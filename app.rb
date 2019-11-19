@@ -1,6 +1,7 @@
 require 'sinatra/base'
 
 require_relative 'model/listings.rb'
+require_relative 'model/guest.rb'
 
 class Bnb < Sinatra::Base
 
@@ -12,9 +13,33 @@ class Bnb < Sinatra::Base
     erb :index
   end
 
+  get '/spaces' do
+    @listings = Listings.all
+    erb :spaces
+  end
+
   get '/spaces/new' do
     erb :new_space
   end
+
+  get '/guest/register' do 
+    erb :guests_register
+  end 
+
+  post '/guest/registered' do 
+    Guest.create(
+      first_name: params[:first_name],
+      last_name: params[:last_name],
+      email_address: params[:email_address],
+      user_name: params[:user_name],
+      password: params[:password]
+    )
+    redirect('/guest/ThankYou')
+  end 
+
+  get '/guest/ThankYou' do
+        "Thank you for Signing Up :)"
+  end 
 
   post '/listed' do
     Listings.create(
@@ -25,11 +50,7 @@ class Bnb < Sinatra::Base
       contact_details: params[:contact_details],
       description: params[:description]
     )
-    redirect('/confirmation')
-  end
-
-  get '/confirmation' do
-    'Listing added OK'
+    redirect('/spaces')
   end
 
   run! if app_file == $0

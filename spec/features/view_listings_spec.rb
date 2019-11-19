@@ -1,11 +1,20 @@
-feature 'view listings' do
-  scenario 'home page has a way to add listings' do
+require './spec/web_helpers/create_listing.rb'
+
+
+feature 'viewing listings' do
+  scenario 'redirect from home page works' do
     visit '/'
-    expect(page).to have_button 'Add listing!'
+    click_on "View listings!"
+    expect(page).to have_current_path('/spaces')
   end
 
-  scenario 'home page has a way to view listings' do
-    visit '/'
-    expect(page).to have_button 'View listings!'
+  scenario 'the listings page has all the listing properties' do
+    create_listing
+    expect(page).to have_content('Description:')
+    expect(page).to have_content('Price per night:')
+    expect(page).to have_content('Location:')
+    expect(page).to have_content('Available:')
+    expect(page).to have_content('Owner:')
+    expect(page).to have_content('Contact details:')
   end
 end
