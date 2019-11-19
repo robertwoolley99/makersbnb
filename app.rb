@@ -30,11 +30,7 @@ class Bnb < Sinatra::Base
       contact_details: params[:contact_details],
       description: params[:description]
     )
-    redirect('/confirmation')
-  end
-
-  get '/confirmation' do
-    'Listing added OK'
+    redirect('/spaces')
   end
 
   run! if app_file == $0
