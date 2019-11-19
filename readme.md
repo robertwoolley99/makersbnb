@@ -30,8 +30,6 @@ Specification
 
 
 
-
-
 # User Stories
 
 ## For Minimum Viable Product:
