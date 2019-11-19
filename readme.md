@@ -32,9 +32,9 @@ Specification
 
 
 
-# User Stories
+# Planning
 
-## For Minimum Viable Product:
+## User stories for Minimum Viable Product:
 
 ### Adding Properties:  
 > As a property owner.  
@@ -50,14 +50,34 @@ Specification
 
 ## To add after MVP
 
-### User Management - Landlord
+![erd-1](images/erd-1.png)
+
+### User stories - Landlord
 > As a landlord.  
 > so that I can control my listing  
 > I want to have an account on the system which identifies me.
-> 
+ 
+> As a landlord.  
+> so that I can get bookings  
+> I want to be able to add a listing.
+ 
+> As a landlord.  
+> so I can organise my diary  
+> I want to be able to view a list of bookings.
 
-### User Management - Tenant
-> As a tenant so that I can make bookings.  
+### User Stories - Guest 
+> As a guest  
+> so that I can make bookings.  
 > I want to have an account on the system which identifies me.
 
+> As a guest  
+> so that I can choose a place to stay.  
+> I want to be able to view the listings.
 
+> As a guest  
+> so that I can reserve a place to stay.   
+> I want to be able to make a booking. 
+
+> As a guest  
+> so that I can check my itinerary.   
+> I want to be able to view a list of my bookings. 
