@@ -16,22 +16,11 @@
            <li>Location: <%=listing.location%> Available: <%=listing.dates_available%></li>
            <li>Owner: <%=listing.owner_name%> Contact details: <%=listing.contact_details%></li>
 
-           <div class='unavailable_dates' data-dates="['<%=@bookings[0].check_in%>', '<%= @bookings[0].check_out%>']"></div>
+           <form action="/check_dates" method="post">
 
-           <form action="/booking" method="post">
-             <div id="holder1">
-               <p>Check-in date:</p>
-               <input type="text" name="check_in" class="datepicker" readonly>
-             </div>
-
-             <div id="holder2">
-               <p>Check-out date:</p>
-               <input type="text" name="check_out" class="datepicker" readonly>
-             </div>
-             <br></br>
              <p>Listing id: <input style="width: 30px;" type="text" name="listing_id" value="<%=listing.id%>" readonly></p>
 
-               <input type="submit" value="Submit">
+               <input type="submit" value="Check availability">
            </form>
 
          <% end %>
