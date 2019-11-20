@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-  $.get('postgres://TopherBarnett@localhost/makersbnb', function(data) {
-  $('#disabled_dates').text(data.check_in);
 
   var disabledDates = ["01-12-2019","05-12-2019","03-12-2019"]
 
