@@ -15,7 +15,7 @@ class Bnb < Sinatra::Base
   end
 
   get '/spaces' do
-    @listings = Listings.all
+    @listings = Listings.all 
     erb :spaces
   end
 
