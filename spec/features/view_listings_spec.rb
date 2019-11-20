@@ -1,6 +1,3 @@
-require './spec/web_helpers/create_listing.rb'
-
-
 feature 'viewing listings' do
   scenario 'redirect from home page works' do
     visit '/'

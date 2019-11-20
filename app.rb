@@ -1,7 +1,9 @@
 require 'sinatra/base'
 
 require_relative 'model/listings.rb'
+require_relative 'model/bookings.rb'
 require_relative 'model/guest.rb'
+
 
 class Bnb < Sinatra::Base
 
@@ -14,7 +16,7 @@ class Bnb < Sinatra::Base
   end
 
   get '/spaces' do
-    @listings = Listings.all
+    @listings = Listing.all
     erb :spaces
   end
 
@@ -42,7 +44,7 @@ class Bnb < Sinatra::Base
   end 
 
   post '/listed' do
-    Listings.create(
+    Listing.create(
       location: params[:location],
       price: params[:price_per_night],
       dates_available: params[:dates_available],
@@ -51,6 +53,19 @@ class Bnb < Sinatra::Base
       description: params[:description]
     )
     redirect('/spaces')
+  end
+
+  post '/booking' do
+    Booking.create(
+      check_in: params[:check_in],
+      check_out: params[:check_out],
+      listing_id: params[:listing_id]
+    )
+    redirect('/confirmation')
+  end
+
+  get '/confirmation' do
+    'Thanks for booking'
   end
 
   run! if app_file == $0
