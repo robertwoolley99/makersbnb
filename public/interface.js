@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 
-  var disabledDates = ["01-12-2019","05-12-2019","03-12-2019"]
+  var disabledDates = $(".unavailable_dates").data("dates");
 
 
 
