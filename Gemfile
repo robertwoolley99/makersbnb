@@ -8,6 +8,10 @@ gem 'data_mapper'
 gem 'pg'
 gem 'dm-postgres-adapter'
 
+
+
+gem 'dm-rspec'
 gem 'capybara'
 gem 'rspec'
 gem 'sinatra'
+
