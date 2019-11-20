@@ -7,24 +7,39 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="interface.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
   </head>
     <body>
-       <ul>
+      <div class="box">
          <% @listings.each do |listing| %>
-
-           <li>Description: <%=listing.description%> Price per night: <%=listing.price%></li>
-           <li>Location: <%=listing.location%> Available: <%=listing.dates_available%></li>
-           <li>Owner: <%=listing.owner_name%> Contact details: <%=listing.contact_details%></li>
+         <div class="child">
+           <div>
+           <p>Description: <%=listing.description%></p>
+           <p>Price per night: <%=listing.price%></p>
+           <p>Location: <%=listing.location%></p>
+           <p>Available: <%=listing.dates_available%></p>
+           <p>Owner: <%=listing.owner_name%></p>
+           <p>Contact details: <%=listing.contact_details%></p>
 
            <form action="/check_dates" method="post">
 
-             <p>Listing id: <input style="width: 30px;" type="text" name="listing_id" value="<%=listing.id%>" readonly></p>
+             <p>Listing id: <input class="listing_id" style="width: 25px; height: 30px;" type="text" name="listing_id" value="<%=listing.id%>" readonly></p>
 
                <input type="submit" value="Check availability">
            </form>
+           </div>
+           <div class="hotel_image"><img style="width:200px;" src="https://d10frqznkjv786.cloudfront.net/2016/01/11/402249/130492/generic_hotel_low_poly_3d_model_c4d_max_obj_fbx_ma_lwo_3ds_3dm_stl_1547483_o.jpg"></div>
 
+
+          </div>
          <% end %>
-       </ul>
+
+      </div>
 
        <span id="disabled_dates"></span>
      </body>

@@ -37,6 +37,10 @@ class Bnb < Sinatra::Base
     redirect('/spaces')
   end
 
+  post '/booking' do
+    redirect('/confirmation')
+  end
+
   post '/check_dates' do
     session[:listing_id] = params[:listing_id]
     redirect('/dates')
