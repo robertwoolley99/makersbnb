@@ -3,6 +3,7 @@ require 'sinatra/base'
 require_relative 'model/listings.rb'
 require_relative 'model/bookings.rb'
 require_relative 'model/guest.rb'
+require_relative 'model/landlord.rb'
 
 
 class Bnb < Sinatra::Base
@@ -42,6 +43,26 @@ class Bnb < Sinatra::Base
   get '/guest/ThankYou' do
         "Thank you for Signing Up :)"
   end 
+
+  get '/landlord/register' do
+    erb :landlord_register
+  end 
+
+  post '/landlord/registered' do
+    Landlord.create(
+    first_name: params[:first_name],
+      last_name: params[:last_name],
+      email_address: params[:email_address],
+      user_name: params[:user_name],
+      password: params[:password]
+    )
+    redirect ('/landlord/ThankYou')
+  end
+
+  get '/landlord/ThankYou' do
+    "Thank you for Signing Up :)"
+  end 
+
 
   post '/listed' do
     Listing.create(
