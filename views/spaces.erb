@@ -15,7 +15,8 @@
            <li>Description: <%=listing.description%> Price per night: <%=listing.price%></li>
            <li>Location: <%=listing.location%> Available: <%=listing.dates_available%></li>
            <li>Owner: <%=listing.owner_name%> Contact details: <%=listing.contact_details%></li>
-           <div class='unavailable_dates' data-dates="['01-12-2019']"></div>
+
+           <div class='unavailable_dates' data-dates="['<%=@bookings[0].check_in%>', '<%= @bookings[0].check_out%>']"></div>
 
            <form action="/booking" method="post">
              <div id="holder1">

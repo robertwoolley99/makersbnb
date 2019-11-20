@@ -9,6 +9,7 @@ $(document).ready(function() {
     showOn: "both",
     beforeShowDay: function(date){
         var string = jQuery.datepicker.formatDate('dd-mm-yy', date);
+        console.log(disabledDates)
         return [ disabledDates.indexOf(string) == -1 ]
       }
   });
