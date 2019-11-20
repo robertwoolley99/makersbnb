@@ -3,6 +3,8 @@ require 'capybara/rspec'
 require 'rspec'
 require 'dm-rspec'
 
+require "web_helpers/create_listing.rb"
+
 require File.join(File.dirname(__FILE__), '..', 'app.rb')
 
 Capybara.app = Bnb

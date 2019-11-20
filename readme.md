@@ -28,11 +28,9 @@ Specification
     A ‘chat’ functionality once a space has been booked, allowing users whose space-booking request has been confirmed to chat with the user that owns that space
     Basic payment implementation though Stripe.
 
+# Planning
 
-
-# User Stories
-
-## For Minimum Viable Product:
+## User stories for Minimum Viable Product:
 
 ### Adding Properties:  
 > As a property owner.  
@@ -48,24 +46,34 @@ Specification
 
 ## To add after MVP
 
-### User Management - Landlord
-> As a landlord.  
-> so that I can control my listing  
-> I want to have an account on the system which identifies me.
->
-> As a landlord.  
-> so that I can control my listing  
-> I want to be able to amend my listing
->
-> As a landlord.  
-> so that I can manage customers.
-> I want to be able to block out dates that have been booked.
+![erd-1](images/erd-1.png)
 
-### User Management - Tenant
-> As a tenant.
+### User stories - Landlord
+> As a landlord.  
+> so that I can control my listing  
+> I want to have an account on the system which identifies me.
+
+> As a landlord.  
+> so that I can get bookings  
+> I want to be able to add a listing.
+ 
+> As a landlord.  
+> so I can organise my diary  
+> I want to be able to view a list of bookings.
+
+### User Stories - Guest 
+> As a guest  
 > so that I can make bookings.  
 > I want to have an account on the system which identifies me.
->
-> As a tenant.
-> so that I can make bookings.  
-> I want to be able to book for a certain date.
+
+> As a guest  
+> so that I can choose a place to stay.  
+> I want to be able to view the listings.
+
+> As a guest  
+> so that I can reserve a place to stay.   
+> I want to be able to make a booking. 
+
+> As a guest  
+> so that I can check my itinerary.   
+> I want to be able to view a list of my bookings. 
