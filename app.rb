@@ -55,6 +55,14 @@ class Bnb < Sinatra::Base
     erb :landlord_login
   end
 
+  post '/landlord/retrieve_id' do
+    # look up id in database
+    current_landlord = Landlord.first(:user_name => params[:user_name])
+    # save id to session
+    session[:landlord_id] = current_landlord.id
+    redirect ('/landlord/welcome')
+  end
+
   get '/landlord/register' do
     erb :landlord_register
   end
@@ -77,8 +85,7 @@ class Bnb < Sinatra::Base
   end
 
   get '/landlord/view' do
-    landlord_id = session[:landlord_id] # temporary to test
-    @landlord = Landlord.get(1) # landlord with id 1
+    @landlord = Landlord.get(session[:landlord_id]) # shows you your own account
     erb :landlord_view
   end
 
@@ -119,8 +126,6 @@ class Bnb < Sinatra::Base
   get '/confirmation' do
     'Thanks for booking'
   end
-
-
 
   run! if app_file == $0
 end
