@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/redmond/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="interface.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+    <body>
+           <p>Description: <%=@listing.description%> Price per night: <%=@listing.price%></p>
+           <p>Location: <%=@listing.location%> Available: <%=@listing.dates_available%></p>
+           <p>Owner: <%=@listing.owner_name%> Contact details: <%=@listing.contact_details%></p>
+           <div class='unavailable_dates' data-dates="['<%=@bookings[@listing.id - 1].check_in%>', '<%=@bookings[@listing.id - 1].check_out %>']"></div>
+           <form action="/booking" method="post">
+             <div id="holder1">
+               <p>Check-in date:</p>
+               <input type="text" name="check_in" class="datepicker" readonly>
+             </div>
+
+             <div id="holder2">
+               <p>Check-out date:</p>
+               <input type="text" name="check_out" class="datepicker" readonly>
+             </div>
+             <p>Listing id: <input style="width: 30px;" type="text" name="listing_id" value="<%=@listing.id%>" readonly></p>
+               <input type="submit" value="Submit">
+           </form>
+
+       <span id="disabled_dates"></span>
+     </body>
+</html>
