@@ -44,8 +44,16 @@ class Bnb < Sinatra::Base
   end 
 
   get '/guest/ThankYou' do
-        "Thank you for Signing Up :)"
+    "Thank you for Signing Up :)"
   end 
+
+  get "/landlord/home" do
+    erb :landlord_home
+  end
+
+  get '/landlord/login' do
+    erb :landlord_login
+  end
 
   get '/landlord/register' do
     erb :landlord_register
