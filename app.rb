@@ -4,6 +4,7 @@ require_relative 'model/listings.rb'
 require_relative 'model/bookings.rb'
 require_relative 'model/guest.rb'
 require_relative 'model/landlord.rb'
+require_relative 'lib/get_dates.rb'
 
 
 class Bnb < Sinatra::Base
@@ -102,10 +103,9 @@ class Bnb < Sinatra::Base
   end
 
   get '/dates' do
-    @listings = Listing.all
-    @bookings = Booking.all
-    @listing = @listings[session[:listing_id].to_i - 1]
-    @booking = Booking.all(:listing_id => 1)
+    @listing = Listing.all(:id => session[:listing_id])[0]
+    @bookings = Booking.all(:listing_id => @listing.id)
+    get_dates
     erb :dates
   end
 
