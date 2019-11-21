@@ -28,11 +28,11 @@ class Bnb < Sinatra::Base
     erb :new_space
   end
 
-  get '/guest/register' do 
+  get '/guest/register' do
     erb :guests_register
-  end 
+  end
 
-  post '/guest/registered' do 
+  post '/guest/registered' do
     Guest.create(
       first_name: params[:first_name],
       last_name: params[:last_name],
@@ -41,11 +41,11 @@ class Bnb < Sinatra::Base
       password: params[:password]
     )
     redirect('/guest/ThankYou')
-  end 
+  end
 
   get '/guest/ThankYou' do
     "Thank you for Signing Up :)"
-  end 
+  end
 
   get "/landlord/home" do
     erb :landlord_home
@@ -57,27 +57,30 @@ class Bnb < Sinatra::Base
 
   get '/landlord/register' do
     erb :landlord_register
-  end 
+  end
 
   post '/landlord/registered' do
-    Landlord.create(
-    first_name: params[:first_name],
+    current_landlord = Landlord.create(
+      first_name: params[:first_name],
       last_name: params[:last_name],
       email_address: params[:email_address],
       user_name: params[:user_name],
       password: params[:password]
     )
+    session[:landlord_id] = current_landlord.id
     redirect ('/landlord/welcome')
   end
 
+  get '/landlord/welcome' do
+    @landlord_id = session[:landlord_id] # temporary to test
+    erb :landlord_welcome
+  end
+
   get '/landlord/view' do
+    landlord_id = session[:landlord_id] # temporary to test
     @landlord = Landlord.get(1) # landlord with id 1
     erb :landlord_view
   end
-
-  get '/landlord/welcome' do
-    erb :landlord_welcome
-  end 
 
   post '/listed' do
     Listing.create(
