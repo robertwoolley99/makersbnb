@@ -45,7 +45,23 @@ class Bnb < Sinatra::Base
   end
 
   get '/guest/ThankYou' do
-        "Thank you for Signing Up :)"
+    "Thank you for Signing Up :)"
+  end
+
+  get "/landlord/home" do
+    erb :landlord_home
+  end
+
+  get '/landlord/login' do
+    erb :landlord_login
+  end
+
+  post '/landlord/retrieve_id' do
+    # look up id in database
+    current_landlord = Landlord.first(:user_name => params[:user_name])
+    # save id to session
+    session[:landlord_id] = current_landlord.id
+    redirect ('/landlord/welcome')
   end
 
   get '/landlord/register' do
@@ -53,27 +69,25 @@ class Bnb < Sinatra::Base
   end
 
   post '/landlord/registered' do
-    Landlord.create(
-    first_name: params[:first_name],
+    current_landlord = Landlord.create(
+      first_name: params[:first_name],
       last_name: params[:last_name],
       email_address: params[:email_address],
       user_name: params[:user_name],
       password: params[:password]
     )
+    session[:landlord_id] = current_landlord.id
     redirect ('/landlord/welcome')
   end
 
-
-  get '/landlord/ThankYou' do
-    "Thank you for Signing Up :)"
-  end
-  get '/landlord/view' do
-    @landlord = Landlord.get(1) # landlord with id 1
-    erb :landlord_view
-  end
-
   get '/landlord/welcome' do
+    @landlord_id = session[:landlord_id] # temporary to test
     erb :landlord_welcome
+  end
+  
+  get '/landlord/view' do
+    @landlord = Landlord.get(session[:landlord_id]) # shows you your own account
+    erb :landlord_view
   end
 
   post '/listed' do
@@ -112,8 +126,6 @@ class Bnb < Sinatra::Base
   get '/confirmation' do
     'Thanks for booking'
   end
-
-
 
   run! if app_file == $0
 end
