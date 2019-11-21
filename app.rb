@@ -28,11 +28,11 @@ class Bnb < Sinatra::Base
     erb :new_space
   end
 
-  get '/guest/register' do 
+  get '/guest/register' do
     erb :guests_register
-  end 
+  end
 
-  post '/guest/registered' do 
+  post '/guest/registered' do
     Guest.create(
       first_name: params[:first_name],
       last_name: params[:last_name],
@@ -41,15 +41,15 @@ class Bnb < Sinatra::Base
       password: params[:password]
     )
     redirect('/guest/ThankYou')
-  end 
+  end
 
   get '/guest/ThankYou' do
         "Thank you for Signing Up :)"
-  end 
+  end
 
   get '/landlord/register' do
     erb :landlord_register
-  end 
+  end
 
   post '/landlord/registered' do
     Landlord.create(
@@ -64,7 +64,7 @@ class Bnb < Sinatra::Base
 
   get '/landlord/ThankYou' do
     "Thank you for Signing Up :)"
-  end 
+  end
 
 
   post '/listed' do
@@ -91,8 +91,8 @@ class Bnb < Sinatra::Base
   get '/dates' do
     @listings = Listing.all
     @bookings = Booking.all
-    @booking = @bookings[session[:listing_id].to_i - 1]
     @listing = @listings[session[:listing_id].to_i - 1]
+    @booking = Booking.all(:listing_id => 1)
     erb :dates
   end
 

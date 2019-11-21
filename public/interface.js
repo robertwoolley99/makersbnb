@@ -4,7 +4,7 @@ $(document).ready(function() {
   var disabledDates = $(".unavailable_dates").data("dates");
   var minDate = new Date();
 
-  console.log(disabledDates)
+  console.dir(disabledDates)
 
 
 
