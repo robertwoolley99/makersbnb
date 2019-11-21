@@ -18,7 +18,7 @@
            <p>Description: <%=@listing.description%> Price per night: <%=@listing.price%></p>
            <p>Location: <%=@listing.location%> Available: <%=@listing.dates_available%></p>
            <p>Owner: <%=@listing.owner_name%> Contact details: <%=@listing.contact_details%></p>
-           <div class='unavailable_dates' data-dates="['<%=@bookings[@listing.id - 1].check_in%>', '<%=@bookings[@listing.id - 1].check_out %>']"></div>
+           <div class='unavailable_dates' data-dates="<%= @bookings.all(:listing_id => @listing.id) %>"></div>
            <form action="/booking" method="post">
              <div id="holder1">
                <p>Check-in date:</p>
