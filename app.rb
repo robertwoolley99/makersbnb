@@ -28,11 +28,11 @@ class Bnb < Sinatra::Base
     erb :new_space
   end
 
-  get '/guest/register' do 
+  get '/guest/register' do
     erb :guests_register
-  end 
+  end
 
-  post '/guest/registered' do 
+  post '/guest/registered' do
     Guest.create(
       first_name: params[:first_name],
       last_name: params[:last_name],
@@ -41,35 +41,53 @@ class Bnb < Sinatra::Base
       password: params[:password]
     )
     redirect('/guest/ThankYou')
-  end 
+  end
 
   get '/guest/ThankYou' do
-        "Thank you for Signing Up :)"
-  end 
+    "Thank you for Signing Up :)"
+  end
+
+  get "/landlord/home" do
+    erb :landlord_home
+  end
+
+  get '/landlord/login' do
+    erb :landlord_login
+  end
+
+  post '/landlord/retrieve_id' do
+    # look up id in database
+    current_landlord = Landlord.first(:user_name => params[:user_name])
+    # save id to session
+    session[:landlord_id] = current_landlord.id
+    redirect ('/landlord/welcome')
+  end
 
   get '/landlord/register' do
     erb :landlord_register
-  end 
+  end
 
   post '/landlord/registered' do
-    Landlord.create(
-    first_name: params[:first_name],
+    current_landlord = Landlord.create(
+      first_name: params[:first_name],
       last_name: params[:last_name],
       email_address: params[:email_address],
       user_name: params[:user_name],
       password: params[:password]
     )
+    session[:landlord_id] = current_landlord.id
     redirect ('/landlord/welcome')
   end
 
-  get '/landlord/view' do
-    @landlord = Landlord.get(1) # landlord with id 1
-    erb :landlord_view
+  get '/landlord/welcome' do
+    @landlord_id = session[:landlord_id] # temporary to test
+    erb :landlord_welcome
   end
 
-  get '/landlord/welcome' do
-    erb :landlord_welcome
-  end 
+  get '/landlord/view' do
+    @landlord = Landlord.get(session[:landlord_id]) # shows you your own account
+    erb :landlord_view
+  end
 
   post '/listed' do
     Listing.create(
@@ -108,8 +126,6 @@ class Bnb < Sinatra::Base
   get '/confirmation' do
     'Thanks for booking'
   end
-
-
 
   run! if app_file == $0
 end

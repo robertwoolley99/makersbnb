@@ -1,24 +1,19 @@
 <!DOCTYPE html>
 <html>
 
+<head>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript" src="interface.js"></script>
+</head>
 
-  <head>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script type="text/javascript" src="interface.js"></script>
-  
 <body>
-           <p>First Name: <%=@landlord.first_name%></p>
-           <p>Last Name : <%=@landlord.last_name%></p>
-           <p>Email address <%=@landlord.email_address%></p>
-
-           <%# <form action="/landlord/view" method="get"> %>
-            
-        
-
-
-     </body>
+   <p>First Name: <%=@landlord.first_name%></p>
+   <p>Last Name : <%=@landlord.last_name%></p>
+   <p>Email address <%=@landlord.email_address%></p>
+   <p>ID: <%=@landlord.id%></p>
+</body>
 
 </html>
