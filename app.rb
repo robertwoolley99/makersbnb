@@ -56,13 +56,17 @@ class Bnb < Sinatra::Base
       user_name: params[:user_name],
       password: params[:password]
     )
-    redirect ('/landlord/ThankYou')
+    redirect ('/landlord/welcome')
   end
 
-  get '/landlord/ThankYou' do
-    "Thank you for Signing Up :)"
-  end 
+  get '/landlord/view' do
+    @landlord = Landlord.get(1) # landlord with id 1
+    erb :landlord_view
+  end
 
+  get '/landlord/welcome' do
+    erb :landlord_welcome
+  end 
 
   post '/listed' do
     Listing.create(
@@ -82,12 +86,14 @@ class Bnb < Sinatra::Base
       check_out: params[:check_out],
       listing_id: params[:listing_id]
     )
-    redirect('/confirmation')
+    redirect('/confirmation') 
   end
 
   get '/confirmation' do
     'Thanks for booking'
   end
+
+
 
   run! if app_file == $0
 end
