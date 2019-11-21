@@ -5,8 +5,8 @@ class Booking
   include DataMapper::Resource
 
   property :id           , Serial
-  property :check_in     , DateTime
-  property :check_out    , DateTime
+  property :check_in     , String
+  property :check_out    , String
 
   belongs_to :listing
 

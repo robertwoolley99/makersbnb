@@ -8,6 +8,8 @@ require_relative 'model/landlord.rb'
 
 class Bnb < Sinatra::Base
 
+  enable :sessions
+
   DataMapper.setup :default, "postgres://#{ENV["USER"]}@localhost/makersbnb"
   DataMapper.finalize
   DataMapper.auto_migrate!
@@ -18,6 +20,7 @@ class Bnb < Sinatra::Base
 
   get '/spaces' do
     @listings = Listing.all
+    @bookings = Booking.all
     erb :spaces
   end
 
@@ -87,6 +90,19 @@ class Bnb < Sinatra::Base
       listing_id: params[:listing_id]
     )
     redirect('/confirmation') 
+  end
+
+  post '/check_dates' do
+    session[:listing_id] = params[:listing_id]
+    redirect('/dates')
+  end
+
+  get '/dates' do
+    @listings = Listing.all
+    @bookings = Booking.all
+    @booking = @bookings[session[:listing_id].to_i - 1]
+    @listing = @listings[session[:listing_id].to_i - 1]
+    erb :dates
   end
 
   get '/confirmation' do

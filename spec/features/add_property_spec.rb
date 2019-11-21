@@ -1,6 +1,6 @@
 feature 'adding property' do
   after(:each) do
-    Listings.destroy
+    Listing.destroy
   end
   
   scenario 'you can visit the add listings page' do
