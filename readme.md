@@ -61,19 +61,58 @@ Specification
 > so I can organise my diary  
 > I want to be able to view a list of bookings.
 
+>As a registered landlord  
+>so that my space can be rented by guests  
+>I want to be able to list it.
+
+>As a registered landlord  
+>so that I can rent out my portfolio  
+>I want to be able to list multiple spaces.
+
+>As a registered landlord  
+>so that I can attract guests  
+>I want to be able to give each space a name, a price and a description.
+
+>As a registered landlord  
+>so that I can manage occupancy  
+>I want to be able to list available dates for my spaces.
+
+>As a registered landlord  
+>so that I can manage my bookings  
+>I want to be able to approve guest requests for one night stays at locations I own.
+
+>As a registered landlord.  
+>So that I do not make double bookings  
+>I should not receive a booking request for a venue which is already sold for the night.
+
+
+
+
 ### User Stories - Guest 
 > As a guest  
-> so that I can make bookings.  
+> so that I can make bookings  
 > I want to have an account on the system which identifies me.
 
 > As a guest  
-> so that I can choose a place to stay.  
+> so that I can choose a place to stay  
 > I want to be able to view the listings.
 
 > As a guest  
-> so that I can reserve a place to stay.   
+> so that I can reserve a place to stay   
 > I want to be able to make a booking. 
 
 > As a guest  
-> so that I can check my itinerary.   
+> so that I can check my itinerary   
 > I want to be able to view a list of my bookings. 
+ 
+> As a registered guest
+> so that I can make a booking.  
+> I want to be able to request a one night stay at a location of my choice.
+
+>As a registered guest.  
+>So that there are no double bookings    
+>I should not be able to book a venue which is already sold for the night. 
+
+>As a registered guest
+>So that I can make a booking.  
+>I should be able to make a booking request for any venue which has not already had a booking confirmed by a landlord.
