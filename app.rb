@@ -4,6 +4,7 @@ require_relative 'model/listings.rb'
 require_relative 'model/bookings.rb'
 require_relative 'model/guest.rb'
 require_relative 'model/landlord.rb'
+require_relative 'lib/get_dates.rb'
 
 
 class Bnb < Sinatra::Base
@@ -83,7 +84,7 @@ class Bnb < Sinatra::Base
     @landlord_id = session[:landlord_id] # temporary to test
     erb :landlord_welcome
   end
-
+  
   get '/landlord/view' do
     @landlord = Landlord.get(session[:landlord_id]) # shows you your own account
     erb :landlord_view
@@ -107,7 +108,7 @@ class Bnb < Sinatra::Base
       check_out: params[:check_out],
       listing_id: params[:listing_id]
     )
-    redirect('/confirmation') 
+    redirect('/confirmation')
   end
 
   post '/check_dates' do
@@ -116,10 +117,9 @@ class Bnb < Sinatra::Base
   end
 
   get '/dates' do
-    @listings = Listing.all
-    @bookings = Booking.all
-    @booking = @bookings[session[:listing_id].to_i - 1]
-    @listing = @listings[session[:listing_id].to_i - 1]
+    @listing = Listing.all(:id => session[:listing_id])[0]
+    @bookings = Booking.all(:listing_id => @listing.id)
+    get_dates
     erb :dates
   end
 
