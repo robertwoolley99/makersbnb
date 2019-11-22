@@ -1,6 +1,25 @@
-<p>Log in to your account</p>
-<form action='/landlord/secure_login' method='post'>
-  <input type='text' name='user_name' placeholder='username'>
-  <input type='password' name='password' placeholder='password'>
-  <input type='submit' value='OK'>
-</form>
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/styles.css">
+  </head>
+
+  <body class="landlord-page">
+
+    <div class="landlord-box">
+      <p>Log in to your account</p>
+
+      <form action='/landlord/retrieve_id' method='post'>
+        <input type='text' name='user_name' placeholder='username'>
+        <input type='password' name='password' placeholder='password'>
+        <input type='submit' value='OK'>
+      </form>
+
+    </div>
+
+  </body>
+</html>
+
