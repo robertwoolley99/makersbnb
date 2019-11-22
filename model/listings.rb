@@ -14,5 +14,6 @@ class Listing
   property :created_at     , DateTime
 
   has n, :bookings
+  belongs_to :landlord
 
 end
