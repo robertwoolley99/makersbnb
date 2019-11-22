@@ -1,9 +1,26 @@
-<h1>Welcome to Makers BnB</h1>
+<!DOCTYPE html>
+<html>
 
-<form action='/landlord/register' method='get'>
-  <input type='submit' value='Sign up'>
-</form>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/styles.css">
+  </head>
+  <body class="landlord-page">
 
-<form action='/landlord/login' method='get'>
-  <input type='submit' value='Log in'>
-</form>
+    <div class="landlord-box">
+
+      <h1>Create a landlord account</h1>
+
+      <form action='/landlord/register' method='get'>
+        <input class="l-button" type='submit' value='Create account'>
+      </form>
+
+      <h1>Already have an account?</h1>
+      <form action='/landlord/login' method='get'>
+        <input class="l-button" type='submit' value='Log in'>
+      </form>
+
+    </div>
+
+  </body>
+</html>
