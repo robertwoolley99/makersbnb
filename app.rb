@@ -48,20 +48,28 @@ class Bnb < Sinatra::Base
   end
 
   get "/landlord/home" do
-    erb :landlord_home
+     erb :landlord_home
   end
 
   get '/landlord/login' do
     erb :landlord_login
   end
 
-  post '/landlord/retrieve_id' do
-    # look up id in database
-    current_landlord = Landlord.first(:user_name => params[:user_name])
-    # save id to session
-    session[:landlord_id] = current_landlord.id
-    redirect ('/landlord/welcome')
+  post '/landlord/secure_login' do
+        # look up username & password in database
+    current_landlord = Landlord.first(:user_name => params[:user_name], :password => params[:password])
+    if current_landlord == nil 
+      redirect ('/landlord/error')
+    else
+        # save id to session
+      session[:landlord_id] = current_landlord.id
+      redirect ('/landlord/welcome')
+    end 
   end
+
+  get "/landlord/error" do
+    erb :landlord_error 
+  end 
 
   get '/landlord/register' do
     erb :landlord_register
@@ -89,6 +97,11 @@ class Bnb < Sinatra::Base
     erb :landlord_view
   end
 
+  get '/landlord/listings' do
+    @listings = Listing.all(:landlord_id => session[:landlord_id])
+    @listings[0] == nil ? erb(:no_listings) : erb(:spaces)
+  end
+
   post '/listed' do
     Listing.create(
       location: params[:location],
@@ -96,7 +109,8 @@ class Bnb < Sinatra::Base
       dates_available: params[:dates_available],
       owner_name: params[:owner_name],
       contact_details: params[:contact_details],
-      description: params[:description]
+      description: params[:description],
+      landlord_id: session[:landlord_id],
     )
     redirect('/spaces')
   end
