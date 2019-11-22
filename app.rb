@@ -49,19 +49,27 @@ class Bnb < Sinatra::Base
   end
 
   get "/landlord/home" do
+    # if landlord[:id] === nil 
+    #   redirect '/'
     erb :landlord_home
   end
 
   get '/landlord/login' do
+
     erb :landlord_login
+
   end
 
-  post '/landlord/retrieve_id' do
-    # look up id in database
-    current_landlord = Landlord.first(:user_name => params[:user_name])
-    # save id to session
-    session[:landlord_id] = current_landlord.id
-    redirect ('/landlord/welcome')
+  post '/landlord/secure_login' do
+        # look up id in database
+    current_landlord = Landlord.first(:user_name => params[:user_name], :password => params[:password])
+    if current_landlord == nil 
+      redirect ('/error')
+    else
+        # save id to session
+      session[:landlord_id] = current_landlord.id
+      redirect ('/landlord/welcome')
+    end 
   end
 
   get '/landlord/register' do
