@@ -21,8 +21,7 @@ class Bnb < Sinatra::Base
 
   get '/spaces' do
     @listings = Listing.all
-    @bookings = Booking.all
-    erb :spaces
+    @listings[0] == nil ? erb(:no_listings) : erb(:spaces)
   end
 
   get '/spaces/new' do
@@ -84,7 +83,7 @@ class Bnb < Sinatra::Base
     @landlord_id = session[:landlord_id] # temporary to test
     erb :landlord_welcome
   end
-  
+
   get '/landlord/view' do
     @landlord = Landlord.get(session[:landlord_id]) # shows you your own account
     erb :landlord_view
