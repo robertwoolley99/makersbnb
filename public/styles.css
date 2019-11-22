@@ -1,20 +1,55 @@
 body {
-  color: black;
-  font-family: "Lato", sans-serif;
+  font-family: 'Quicksand', sans-serif;
+  background-color: #ff0d7b;
+  color: #ffffff;
   font-size: 1rem;
   line-height: 1.6em;
   font-weight: 400;
   font-style: normal;
   letter-spacing: 0;
   text-rendering: optimizeLegibility;
-  background: #00c7ff;
   text-align: left;
   flex-grow: 1;
   margin-left: 30px;
 }
 
+.error_message {
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+.homepage > h1 {
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.homepage-button {
+  text-align: center;
+}
+
+.homepage-button-text {
+  font-size: 1.8rem;
+}
+.homepage-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .hotel_image {
-  align-content: right;
+  height: 10rem;
+  border: 2px solid white;
+  border-radius: 5px;
+  margin: 1rem;
+  align-self: flex-start;
+  flex-direction: row;
+  margin-left: auto;
+}
+
+img {
+  border: 2px solid white;
+  border-radius: 5px;
 }
 
 h1 {
@@ -23,9 +58,12 @@ h1 {
 
 input {
   background-color: #22bdff;
-  color: #fff;
-  border: 5px solid #4c5faf; /* Green */
+  border: 5px solid #fdf5e6;
+  border-radius: 5px;
   cursor: pointer;
+  font-family: 'Quicksand', sans-serif;
+  background-color: #ff0d7b;
+  color: #ffffff;
 }
 
 .child {
@@ -33,16 +71,38 @@ input {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
-  margin: auto;
   border: 2px solid white;
   border-radius: 5px;
+  width: 40em;
+  margin: 1em;
+}
+
+.child1 {
+  display: inline-flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid white;
+  border-radius: 5px;
+  width: 10rem;
+  margin: 1em;
+}
+
+.child > div {
+  border: none;
+}
+
+.availability {
+  margin: 1em;
+  height: 7.5rem;
+  align-self: flex-end;
 }
 
 .box {
-  display: flex;
+  display: inline-flex;
   flex-wrap: wrap;
   flex-direction: row;
-    justify-content: space-around;
+  justify-content: space-around;
   margin: auto;
 }
 
