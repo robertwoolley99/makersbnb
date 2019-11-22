@@ -12,6 +12,7 @@ class Landlord
   property :password       , String
   property :created_at     , DateTime
 
+  has n, :listings
 end 
 
 
